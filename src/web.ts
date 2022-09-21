@@ -34,6 +34,7 @@ import {
   DefaultEventOptions,
   DefaultEventWithPreventDefaultOptions,
 } from "./definitions";
+import { PolylineOptions, CircleOptions, PolygonOptions } from "./interfaces";
 
 export class CapacitorGoogleMapsWeb
   extends WebPlugin
@@ -44,6 +45,15 @@ export class CapacitorGoogleMapsWeb
       name: "CapacitorGoogleMaps",
       platforms: ["web"],
     });
+  }
+  addPolyline(_options: PolylineOptions): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+  addCircle(_options: CircleOptions): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+  addPolygon(_options: PolygonOptions): Promise<void> {
+    throw new Error("Method not implemented.");
   }
 
   async initialize(_options: InitializeOptions): Promise<void> {
