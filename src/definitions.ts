@@ -13,6 +13,8 @@ import {
   ElementFromPointResultOptions,
   AddMarkerOptions,
   AddMarkerResult,
+  AddMarkersOptions,
+  AddMarkersResult,
   RemoveMarkerOptions,
   CircleOptions,
   PolygonOptions,
@@ -67,6 +69,8 @@ export interface CapacitorGoogleMapsPlugin {
   moveCamera(options: MoveCameraOptions): Promise<void>;
 
   addMarker(options: AddMarkerOptions): Promise<AddMarkerResult>;
+
+  addMarkers(options: AddMarkersOptions): Promise<AddMarkersResult>;
 
   removeMarker(options: RemoveMarkerOptions): Promise<void>;
 
