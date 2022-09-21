@@ -258,6 +258,29 @@ public class CapacitorGoogleMaps extends Plugin implements CustomMapViewEvents {
     }
 
     @PluginMethod()
+    public void addPolygon(final PluginCall call) {
+    final JSArray points = call.getArray("points", new JSArray());
+        getBridge().executeOnMainThread(new Runnable() {
+            @Override
+            public void run() {
+                PolygonOptions polygonOptions = new PolygonOptions();
+                CustomMapView customMapView = customMapViews.get(mapId);
+                for (int i = 0; i < points.length(); i++) {
+                    try {
+                        JSONObject point = points.getJSONObject(i);
+                        LatLng latLng = new LatLng(point.getDouble("latitude"), point.getDouble("longitude"));
+                        polygonOptions.add(latLng);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                customMapView.addPolygon(polygonOptions);
+                call.resolve();
+            }
+        });
+    }
+
+    @PluginMethod()
     public void updateMap(final PluginCall call) {
         final String mapId = call.getString("mapId");
 
